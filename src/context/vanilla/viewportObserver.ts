@@ -57,7 +57,7 @@ const getViewportSize = (() => {
 export const notifyViewportSizeChanged = () => {
   Observer.notify("viewportSize", getViewportSize());
 };
-const initViewportObserver = () => {
+export const initViewportObserver = () => {
   window.addEventListener("scroll", notifyScrollInfoChanged);
   const resizeObserver = new ResizeObserver(notifyViewportSizeChanged);
   resizeObserver.observe(getViewportElem());
