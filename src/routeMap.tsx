@@ -9,6 +9,8 @@ import LazyLoad1 from "./components/07_lazyLoading/1_r";
 import LazyLoad2 from "./components/07_lazyLoading/2_r";
 import LazyLoad3_V from "./components/07_lazyLoading/3_v";
 import LazyLoad4 from "./components/07_lazyLoading/4_r";
+import TraditionalPagination from "./components/08_pagination/1_traditional";
+import InfiniteScrollR from "./components/08_pagination/2_infiniteScroll";
 
 const _routeMap = {
   root: {
@@ -21,6 +23,7 @@ const _routeMap = {
       "lineClamp",
       "form",
       "lazyLoading",
+      "pagination",
     ],
   },
   accordion: {
@@ -72,6 +75,19 @@ const _routeMap = {
   "lazyLoading/4_r": {
     name: "4R IntersectionObserver + 작은 이미지 로딩 추가",
     Component: LazyLoad4,
+  },
+  pagination: {
+    link: "pagination/1_traditional",
+    name: "08. 페이지네이션",
+    children: ["pagination/1_traditional", "pagination/2_infiniteScrollR"],
+  },
+  "pagination/1_traditional": {
+    name: "1R 내비게이션 바",
+    Component: TraditionalPagination,
+  },
+  "pagination/2_infiniteScrollR": {
+    name: "2R 무한 스크롤",
+    Component: InfiniteScrollR,
   },
 };
 

@@ -108,7 +108,7 @@ const ViewportContextProvider = ({ children }: { children: ReactNode }) => {
     getScrollInfo,
     () => DefaultScrollInfo,
   );
-  console.log(scrollInfo);
+  // console.log(scrollInfo);
 
   return (
     <ScrollInfoContext value={scrollInfo}>
