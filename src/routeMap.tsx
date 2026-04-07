@@ -5,6 +5,10 @@ import Tooltips from "./components/03_tooltip";
 import ReactiveTextBox from "./components/04_reactiveTextBox";
 import LineClapms from "./components/05_lineClamp";
 import Forms from "./components/06_form";
+import LazyLoad1 from "./components/07_lazyLoading/1_r";
+import LazyLoad2 from "./components/07_lazyLoading/2_r";
+import LazyLoad3_V from "./components/07_lazyLoading/3_v";
+import LazyLoad4 from "./components/07_lazyLoading/4_r";
 
 const _routeMap = {
   root: {
@@ -16,6 +20,7 @@ const _routeMap = {
       "reactiveTextBox",
       "lineClamp",
       "form",
+      "lazyLoading",
     ],
   },
   accordion: {
@@ -41,6 +46,32 @@ const _routeMap = {
   form: {
     name: "06. 폼",
     Component: Forms,
+  },
+  lazyLoading: {
+    link: "lazyLoading/1_r",
+    name: "07. 지연 로딩",
+    children: [
+      "lazyLoading/1_r",
+      "lazyLoading/2_r",
+      "lazyLoading/3_v",
+      "lazyLoading/4_r",
+    ],
+  },
+  "lazyLoading/1_r": {
+    name: "1R 직접계산",
+    Component: LazyLoad1,
+  },
+  "lazyLoading/2_r": {
+    name: "2R IntersectionObserver",
+    Component: LazyLoad2,
+  },
+  "lazyLoading/3_v": {
+    name: "3V 바닐라 레이지 로딩",
+    Component: LazyLoad3_V,
+  },
+  "lazyLoading/4_r": {
+    name: "4R IntersectionObserver + 작은 이미지 로딩 추가",
+    Component: LazyLoad4,
   },
 };
 
