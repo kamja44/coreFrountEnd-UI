@@ -17,16 +17,16 @@ const AccordionItem = ({
   toggle,
 }: AccordionItem) => {
   return (
-    <li className={cx("item", { current })}>
+    <li className={cx("item", "item3", { current })}>
       <button type="button" className={cx("tab")} onClick={toggle}>
         {title}
       </button>
-      {current && <div className={cx("description")}>{description}</div>}
+      <div className={cx("description")}>{description}</div>
     </li>
   );
 };
 
-const Accordion1React = () => {
+const Accordion3_1React = () => {
   const [currentId, setCurrentId] = useState<string | null>(data[0].id);
   const toggleItem = (id: string) => {
     setCurrentId((prevId) => (prevId === id ? null : id));
@@ -35,7 +35,7 @@ const Accordion1React = () => {
   return (
     <>
       <h3>
-        #1. React <sub>현재 desc만 렌더링</sub>
+        #3-1. React <sub>기본 애니메이션</sub>
       </h3>
       <ul className={cx("container")}>
         {data.map((d) => (
@@ -50,4 +50,4 @@ const Accordion1React = () => {
   );
 };
 
-export default Accordion1React;
+export default Accordion3_1React;

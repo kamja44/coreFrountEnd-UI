@@ -38,19 +38,12 @@ const Accordion2React = () => {
         #2. React <sub>CSS로 hidden/show 처리</sub>
       </h3>
       <ul className={cx("container")}>
-        {data.map(({ id, title, description }) => (
-          <li className={cx("item", { current: id === currentId })} key={id}>
-            <button
-              type="button"
-              className={cx("tab")}
-              onClick={() => toggleItem(id)}
-            >
-              {title}
-            </button>
-            {currentId === id && (
-              <div className={cx("description")}>{description}</div>
-            )}
-          </li>
+        {data.map((d) => (
+          <AccordionItem
+            {...d}
+            current={currentId === d.id}
+            toggle={() => toggleItem(d.id)}
+          />
         ))}
       </ul>
     </>
