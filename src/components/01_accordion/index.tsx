@@ -3,6 +3,7 @@ import Accordion2React from "./Accordion2React";
 import Accordion3_1React from "./Accordion3_1React";
 import Accordion3_2React from "./Accordion3_2React";
 import Accordion4Vanilla from "./Accordion4Vanilla";
+import Accordion5_1HTML from "./Accordion5_1HTML";
 import cx from "./cx";
 
 const Accordions = () => {
@@ -14,6 +15,7 @@ const Accordions = () => {
       <Accordion3_1React />
       <Accordion3_2React />
       <Accordion4Vanilla />
+      <Accordion5_1HTML />
     </div>
   );
 };
