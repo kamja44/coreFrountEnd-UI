@@ -1,9 +1,0 @@
-const data = [
-  "commodo velit est incididunt est cillum do reprehenderit ex fugiat tempor tempor occaecat officia eiusmod ex sunt consequat irure et",
-  "in culpa ut elit deserunt amet cupidatat cillum tempor eiusmod voluptate non occaecat ex sint minim eu sunt nisi consequat labore non ex laborum ut eiusmod do labore minim esse incididunt ullamco esse magna quis dolor sunt aliqua nisi occaecat",
-  "elit aliquip veniam consequat non aute mollit laboris nostrud in est laborum pariatur irure labore cillum et in officia est sint veniam fugiat ut duis magna et eu est excepteur esse elit cillum sit commodo in aute irure ipsum nostrud eiusmod Lorem pariatur aliqua incididunt irure fugiat elit nulla quis voluptate velit consectetur Lorem labore laborum labore ea do esse",
-  "magna cupidatat nostrud pariatur est consectetur ea eu ea reprehenderit id voluptate eu do exercitation exercitation culpa sunt incididunt ex ex dolor irure sint minim sit minim do enim quis ex ex tempor duis aute elit ut aute sit do cupidatat exercitation labore ea excepteur consequat laboris officia dolor aliqua et tempor minim aliqua adipisicing quis et nulla culpa laboris cillum pariatur adipisicing nostrud aliqua tempor aute do duis eiusmod ipsum aliquip cillum mollit et consectetur Lorem minim qui dolore",
-  "qui duis nisi occaecat aute ad ea amet consectetur tempor esse eu dolore minim sit magna occaecat aliqua in in irure occaecat ea Lorem sint aliquip nulla aliquip eu enim Lorem aute id aliquip elit sit est voluptate non culpa laboris pariatur ex labore exercitation velit exercitation ex consequat duis magna quis magna sit culpa velit tempor eiusmod dolor cupidatat sit eu ipsum nisi amet tempor proident magna voluptate esse laboris ad minim cupidatat in dolor excepteur cillum laborum adipisicing eiusmod enim amet eiusmod Lorem sunt consequat qui quis dolor dolor id deserunt cillum mollit adipisicing nostrud sunt veniam consequat",
-];
-
-export default data;
