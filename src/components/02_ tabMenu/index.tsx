@@ -5,6 +5,7 @@ import TabMenu3_1React from "./TabMenu3_1React";
 import TabMenu3_2React from "./TabMenu3_2React";
 import TabMenu3_3React from "./TabMenu3_3React";
 import TabMenu4_Vanilla from "./TabMenu4_Vanilla";
+import TabMenu5_HTML from "./TabMenu5_HTML";
 
 const TabMenus = () => {
   return (
@@ -16,6 +17,7 @@ const TabMenus = () => {
       <TabMenu3_2React />
       <TabMenu3_3React />
       <TabMenu4_Vanilla />
+      <TabMenu5_HTML />
     </div>
   );
 };
