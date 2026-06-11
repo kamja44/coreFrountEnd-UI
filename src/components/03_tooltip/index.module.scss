@@ -40,4 +40,12 @@
     background-color: #fff;
     z-index: 2;
   }
+  .details {
+    display: inline-block;
+    position: relative;
+    &[open] .tooltip-trigger:after {
+      border-color: #f50;
+      color: #f50;
+    }
+  }
 }
