@@ -24,4 +24,13 @@
     border-color: #a00;
     outline: 1px solid #a00;
   }
+  .replica {
+    position: absolute;
+    width: calc(100% - 10px);
+    visibility: hidden;
+    min-height: auto;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+  }
 }
