@@ -2,6 +2,7 @@ import cx from "./cx";
 import LineClamp1_React from "./LineClamp1_React";
 import LineClamp2_React from "./LineClamp2_React";
 import LineClamp3_React from "./LineClamp3_React";
+import LineClamp4_Vanilla from "./LineClamp4_Vanilla";
 
 const LineClamps = () => {
   return (
@@ -10,6 +11,7 @@ const LineClamps = () => {
       <LineClamp1_React />
       <LineClamp2_React />
       <LineClamp3_React />
+      <LineClamp4_Vanilla />
     </div>
   );
 };
