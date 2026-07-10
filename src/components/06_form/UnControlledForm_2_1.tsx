@@ -1,0 +1,192 @@
+import type { SyntheticEvent } from "react";
+import { DigitSeperatedInput } from "./DigitSeperatedinput_01";
+
+type FormElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+const validationKeys: (keyof ValidityState)[] = [
+  "badInput",
+  "patternMismatch",
+  "rangeOverflow",
+  "rangeUnderflow",
+  "stepMismatch",
+  "tooLong",
+  "tooShort",
+  "typeMismatch",
+  "valueMissing",
+];
+type FormControl = Partial<
+  Record<keyof ValidityState, string> & {
+    additionalValidator: ($el: FormElement, formData: FormData) => boolean;
+    onInput: ($el: FormElement, formData: FormData) => void;
+    transformData: (formData: FormData) => string | File;
+  }
+>;
+
+const formController: Record<string, FormControl> = {
+  _id: {
+    valueMissing: "아이디를 입력하세요",
+    patternMismatch: "아이디는 영어나 숫자 또는 _만 입력할 수 있습니다.",
+    tooShort: "아이디는 네 글자 이상 입력해 주세요.",
+  },
+  _name: {
+    valueMissing: "이름을 입력하세요.",
+    patternMismatch: "아이디는 영어나 숫자 또는 _만 입력할 수 있습니다.",
+    tooShort: "아이디는 네글자 이상 입력해 주세요",
+  },
+  password_confirm: {
+    additionalValidator: ($el, formData) =>
+      $el.value === formData.get("password"),
+    customError: "비밀번호가 일치하지 않습니다.",
+  },
+  photo: {
+    onInput($el, formData) {
+      const photo = formData.get("photo") as File;
+      const $img = $el.parentElement?.querySelector("img")!;
+      $img.src = photo ? URL.createObjectURL(photo) : "";
+    },
+  },
+  salary: {
+    transformData: (formData) =>
+      (formData.get("salary") as string).replace(/, /g, ""),
+  },
+};
+
+const handleInvalid = (e: SyntheticEvent) => {
+  const $el = e.target as FormElement;
+  const formData = new FormData($el.form!);
+  const inputController = formController[$el.id];
+  const { additionalValidator, customError = "[custom error]" } =
+    inputController || {};
+  if (additionalValidator && !additionalValidator($el, formData)) {
+    $el.setCustomValidity(customError);
+  } else {
+    const invalidKey = validationKeys.find((k) => $el.validity[k]);
+    const errorText = (invalidKey && inputController?.[invalidKey]) || "";
+    $el.setCustomValidity(errorText);
+  }
+  return { $el, formData };
+};
+
+const handleInput = (e: SyntheticEvent) => {
+  const $el = e.target as FormElement;
+  const formData = new FormData($el.form!);
+  const inputController = formController[$el.id];
+  const { additionalValidator, customError = "[custom error]" } =
+    inputController || {};
+  if (additionalValidator && !additionalValidator($el, formData)) {
+    $el.setCustomValidity(customError);
+  } else {
+    const invalidKey = validationKeys.find((k) => $el.validity[k]);
+    const errorText = (invalidKey && inputController?.[invalidKey]) || "";
+    $el.setCustomValidity(errorText);
+  }
+  inputController?.onInput?.($el, formData);
+  $el.reportValidity();
+};
+
+const handleSubmit = (e: SyntheticEvent) => {
+  e.preventDefault();
+  const $form = e.target as HTMLFormElement;
+  const data = new FormData($form);
+
+  for (const [key] of data) {
+    if (formController[key]?.transformData) {
+      data.set(key, formController[key].transformData(data));
+    }
+  }
+  console.log(Object.fromEntries(data));
+};
+
+const UnControlledForm2_1 = () => {
+  return (
+    <>
+      <h3>
+        #2-1. React<sub>비제어 폼</sub>
+      </h3>
+      <form id="registerForm" onInput={handleInput} onChange={handleInput}>
+        <fieldset>
+          <legend>회원가입</legend>
+          <p>
+            <label htmlFor="_id">아이디: </label>
+            <input
+              type="text"
+              id="_id"
+              name="id"
+              required
+              pattern="^[A-Za-z0-9_]{1,}$"
+              minLength={4}
+              maxLength={12}
+            />
+          </p>
+          <p>
+            <label htmlFor="_name">이름: </label>
+            <input
+              type="text"
+              id="_name"
+              name="name"
+              required
+              pattern="^([가-힣]){1,}$"
+              minLength={2}
+            />
+          </p>
+          <p>
+            <label>성별: </label>
+            <input
+              type="radio"
+              id="gender_male"
+              name="gender"
+              value="남"
+              required
+            />
+            <input type="radio" id="gender_female" name="gender" value="여" />
+            <label htmlFor="gender_female">여</label>
+          </p>
+          <p>
+            <label htmlFor="password">비밀번호: </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              autoComplete="off"
+            />
+          </p>
+          <p>
+            <label htmlFor="password_confirm">비밀번호 확인: </label>
+            <input
+              type="password"
+              id="password_confirm"
+              required
+              autoComplete="off"
+            />
+          </p>
+          <div>
+            <label htmlFor="photo">프로필 사진: </label>
+            <input
+              type="file"
+              id="photo"
+              name="photo"
+              required
+              accept="image/png, image/jpeg"
+            />
+            <div>
+              <img alt="" />
+            </div>
+          </div>
+          <p>
+            <label htmlFor="salary">(선택) 연봉: </label>
+            <DigitSeperatedInput name="salary" id="salary" /> 원
+          </p>
+          <p>
+            <input id="agree" name="agree" type="checkbox" required />
+            <label htmlFor="agree">약관에 동의합니다.</label>
+          </p>
+        </fieldset>
+      </form>
+      <button type="submit" form="registerForm">
+        제출
+      </button>
+    </>
+  );
+};
+
+export default UnControlledForm2_1;

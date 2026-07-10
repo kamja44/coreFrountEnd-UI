@@ -1,7 +1,13 @@
 import { useCallback, useRef, type KeyboardEvent } from "react";
 import cx from "./cx";
 
-export const DigitSeperatedInput = () => {
+export const DigitSeperatedInput = ({
+  name,
+  id,
+}: {
+  name?: string;
+  id?: string;
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const valueRef = useRef("0");
   const errorRef = useRef<HTMLSpanElement>(null);
@@ -50,6 +56,8 @@ export const DigitSeperatedInput = () => {
     <>
       <input
         type="text"
+        name={name}
+        id={id}
         ref={inputRef}
         defaultValue={0}
         onInput={handleInput}
